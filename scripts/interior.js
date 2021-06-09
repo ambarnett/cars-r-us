@@ -1,10 +1,13 @@
-import { getInterior } from "./database.js" 
+import { getInterior, setInterior } from "./database.js" 
 
 const interiors = getInterior() 
 
 document.addEventListener(
     "change",
     (event) => {
+        if (event.target.name === "interior") {
+            setInterior(parseInt(event.target.value))
+        }
     }
 )
 

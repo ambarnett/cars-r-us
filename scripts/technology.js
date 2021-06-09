@@ -1,10 +1,13 @@
-import { getTechnology } from "./database.js"
+import { getTechnology, setTechnology } from "./database.js"
 
 const technologies = getTechnology()
 
 document.addEventListener(
     "change",
     (event) => {
+        if (event.target.name === "technology") {
+            setTechnology(parseInt(event.target.value))
+        }
     }
 )
 
