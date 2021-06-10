@@ -63,6 +63,14 @@ export const setTechnology = (id) => {
 export const setWheels = (id) => {
     database.orderBuilder.wheelsId = id
 }
+export const checkOrderState = () => {
+    return (
+        "paintColorId" in database.orderBuilder &&
+        "interiorId" in database.orderBuilder &&
+        "technologyId" in database.orderBuilder &&
+        "wheelsId" in database.orderBuilder
+    )
+}
 export const addCustomOrder = () => {
     const newOrder = {...database.orderBuilder}
 

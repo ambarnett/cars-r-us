@@ -2,18 +2,23 @@ import { paintColors } from "./paint.js"
 import { interiorStyles } from "./interior.js"
 import { technologyPackages } from "./technology.js"
 import { wheelTypes } from "./wheels.js"
-import { addCustomOrder } from "./database.js"
 import { Orders } from "./orders.js"
+import { checkOrderState, addCustomOrder } from "./database.js"
 
 document.addEventListener(
     "click",
     (event) => {
-        const clickedItem = event.target
-        if (clickedItem.id === "orderButton") {
-            addCustomOrder()
+        if (event.target.id === "orderButton") {
+            if( checkOrderState() ) {
+                addCustomOrder()
+            } else {
+                window.alert("please select from all options before placing order.")
+            }
         }
     }
 )
+
+document.addEventListener("showOrderBtn", () => document.querySelector(".orderButton").classList.remove("isHidden"))
 
 export const carsRus = () => {
     return `

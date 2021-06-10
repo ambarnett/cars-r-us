@@ -1,4 +1,5 @@
-import { getWheels, setWheels } from "./database.js" 
+import { getWheels, setWheels, checkOrderState } from "./database.js" 
+import { dispatchOrderBtnEvent } from "./orderBtnEvent.js"
 
 const wheels = getWheels()
 
@@ -7,6 +8,9 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "wheel") {
             setWheels(parseInt(event.target.value))
+            if ( checkOrderState() ) {
+                dispatchOrderBtnEvent()
+            }
         }
     }
 )
