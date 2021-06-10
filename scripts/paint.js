@@ -1,4 +1,5 @@
-import { getPaintColor, setPaint } from "./database.js"
+import { checkOrderState, getPaintColor, setPaint } from "./database.js"
+import { dispatchOrderBtnEvent } from "./orderBtnEvent.js"
 
 const paints = getPaintColor()
 
@@ -7,6 +8,9 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "paint") {
             setPaint(parseInt(event.target.value))
+            if(checkOrderState()){
+                dispatchOrderBtnEvent()
+            }
         }
     }
 )

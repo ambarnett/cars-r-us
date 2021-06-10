@@ -1,4 +1,5 @@
-import { getInterior, setInterior } from "./database.js" 
+import { checkOrderState, getInterior, setInterior } from "./database.js" 
+import { dispatchOrderBtnEvent } from "./orderBtnEvent.js"
 
 const interiors = getInterior() 
 
@@ -7,6 +8,9 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "interior") {
             setInterior(parseInt(event.target.value))
+            if(checkOrderState()){
+                dispatchOrderBtnEvent()
+            }
         }
     }
 )

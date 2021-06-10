@@ -24,6 +24,11 @@ const database = {
         { id: 3, style: "18-inch Pair Spoke Silver", price: 130 },
         { id: 4, style: "18-inch Pair Spoke Black", price: 150 }
     ],
+    vehicles: [
+        {id: 1, style: "Car"},
+        {id: 2, style: "SUV"},
+        {id: 3, style: "Truck"}
+    ],
     customOrder: [
         {
             id: 1,
@@ -31,10 +36,14 @@ const database = {
             interiorId: 1,
             technologyId: 1,
             wheelsId: 1,
+            vehiclesId: 1,
             timestamp: 0
         }
     ]
 }
+//car = 0
+// suv = x1.5
+//truck = x2.25
 
 export const getPaintColor = () => {
     return database.paintColor.map(paint => ({...paint}))
@@ -47,6 +56,9 @@ export const getTechnology = () => {
 }
 export const getWheels = () => {
     return database.wheels.map(wheel => ({...wheel}))
+}
+export const getVehicles = () => {
+    return database.vehicles.map(vehicle => ({...vehicle}))
 }
 export const getOrders = () => {
     return database.customOrder.map(order => ({...order}))
@@ -63,12 +75,16 @@ export const setTechnology = (id) => {
 export const setWheels = (id) => {
     database.orderBuilder.wheelsId = id
 }
+export const setVehicles = (id) => {
+    database.orderBuilder.vehiclesId = id
+}
 export const checkOrderState = () => {
     return (
         "paintColorId" in database.orderBuilder &&
         "interiorId" in database.orderBuilder &&
         "technologyId" in database.orderBuilder &&
-        "wheelsId" in database.orderBuilder
+        "wheelsId" in database.orderBuilder &&
+        "vehiclesId" in database.orderBuilder
     )
 }
 export const addCustomOrder = () => {
