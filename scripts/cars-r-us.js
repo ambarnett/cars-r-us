@@ -4,6 +4,7 @@ import { technologyPackages } from "./technology.js"
 import { wheelTypes } from "./wheels.js"
 import { Orders } from "./orders.js"
 import { checkOrderState, addCustomOrder } from "./database.js"
+import { vehicleTypes } from "./vehicles.js"
 
 document.addEventListener(
     "click",
@@ -44,7 +45,10 @@ export const carsRus = () => {
         </article>
 
         <article>
-            <button id="orderButton">Create Custom Order</button>
+            <section class="choices__vehicles options">
+            ${vehicleTypes()}
+            </section>
+            <button class="orderButton isHidden" id="orderButton">Create Custom Order</button>
         </article>
 
         <article class="customOrders">

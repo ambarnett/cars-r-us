@@ -1,4 +1,5 @@
-import { getTechnology, setTechnology } from "./database.js"
+import { checkOrderState, getTechnology, setTechnology } from "./database.js"
+import { dispatchOrderBtnEvent } from "./orderBtnEvent.js"
 
 const technologies = getTechnology()
 
@@ -7,6 +8,9 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "technology") {
             setTechnology(parseInt(event.target.value))
+            if(checkOrderState()) {
+                dispatchOrderBtnEvent()
+            }
         }
     }
 )
